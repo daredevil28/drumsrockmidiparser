@@ -4,7 +4,7 @@ import math
 import argparse
 from itertools import tee, islice, chain
 
-#The numbers are the notes according to general midi
+#The numbers are the notes according to general midi. Adjust if you want to use a different note
 class DrumNotes:
 	purpleNote = 65
 	greenNote = 64
@@ -80,7 +80,6 @@ def convert_midi(midi):
 					enemyType = 3
 					quarter_note_duration = 60.0 / bpm / 4
 					noteCount = int(math.floor(nxtMsg.time // quarter_note_duration + 1))
-					print(noteCount)
 					drumroll = False
 
 				#If in the next loop the delta time is 0, then assume it is a double note
