@@ -1,5 +1,4 @@
 import mido
-import time
 import math
 import argparse
 from itertools import tee, islice, chain
