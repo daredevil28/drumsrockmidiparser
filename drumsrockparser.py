@@ -50,7 +50,7 @@ def convert_midi(midi):
 	doubleNote = False
 
 	#Create file and name it the same as the midi file but with .csv instead
-	with open(".".join(cmd_args.midi.split(".")[:-1])+".csv", "a") as csvFile:
+	with open(".".join(cmd_args.midi.split(".")[:-1])+".csv", "w") as csvFile:
 
 		#First row
 		csvFile.write("Time [s],Enemy Type,Aux Color 1,Aux Color 2,Nº Enemies,interval,Aux\n")
