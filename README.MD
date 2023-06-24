@@ -34,3 +34,6 @@ A script to convert prepared MIDI files to .csv to support custom songs in Drums
 # How to do drumrolls
 In order to do drum rolls, you have to extend the note so that it becomes longer than 1 quarter note. I advise to put the note over the lines to make sure the script recognises it as a drumroll
 ![Image](/instructions/6.png)
+
+# TO DO:
+* Implement time signature changes for drumrolls.
