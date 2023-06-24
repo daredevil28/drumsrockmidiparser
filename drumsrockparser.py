@@ -126,4 +126,6 @@ parser.add_argument("midi", help="The midi file to be converted")
 
 cmd_args = parser.parse_args()
 
+
+
 convert_midi(mido.MidiFile(cmd_args.midi))
