@@ -74,6 +74,10 @@ def convert_midi(midi):
 
 
 			if msg.type == 'note_on':
+				if get_color_note(msg.note) is None:
+					print("ERROR: Midi note not found. Did you set the drum notes properly?")
+					exit()
+			
 				#If we have detected a drumroll then check how high the fat demon has to be
 				if drumroll:
 					enemyType = 3
