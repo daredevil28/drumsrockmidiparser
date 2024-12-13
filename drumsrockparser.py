@@ -47,9 +47,10 @@ def convert_midi(midi):
 	auxColor2 = 0
 	aux = 0
 	doubleNote = False
+	numerator = 4
 
 	#Create file and name it the same as the midi file but with .csv instead
-	with open(".".join(cmd_args.midi.split(".")[:-1])+".csv", "w") as csvFile:
+	with open(".".join(cmd_args.midi.split(".")[:-1])+".csv", "w", encoding="utf-8") as csvFile:
 
 		#First row
 		csvFile.write("Time [s],Enemy Type,Aux Color 1,Aux Color 2,Nº Enemies,interval,Aux\n")
@@ -61,6 +62,8 @@ def convert_midi(midi):
 			if msg.is_meta:
 				if msg.type == 'set_tempo':
 					bpm = mido.tempo2bpm(msg.tempo)
+				if msg.type == 'time_signature':
+					numerator = msg.numerator
 				continue
 			#If we detected a double note in the previous loop, then skip this one.
 			if doubleNote:
@@ -75,7 +78,7 @@ def convert_midi(midi):
 
 			if msg.type == 'note_on':
 				if get_color_note(msg.note) is None:
-					print("ERROR: Midi note not found. Did you set the drum notes properly?")
+					print("ERROR: Midi note not found. Did you set the drum notes properly?, at {0}".format(currentTime))
 					exit()
 			
 				#If we have detected a drumroll then check how high the fat demon has to be
@@ -123,6 +126,7 @@ def convert_midi(midi):
 
 			previousTime = currentTime
 		print("Finished")
+		print("Total song length: {0} seconds".format(math.floor(currentTime)))
 
 #Parse command line arguments
 parser = argparse.ArgumentParser()
