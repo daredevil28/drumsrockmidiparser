@@ -89,7 +89,7 @@ def convert_midi(midi):
 					drumroll = False
 
 				#If in the next loop the delta time is 0, then assume it is a double note
-				if nxtMsg.time == 0:
+				if nxtMsg.time == 0 and nxtMsg.type == 'note_on':
 					enemyType = 2
 					auxColor2 = get_color_note(nxtMsg.note)
 					doubleNote = True
